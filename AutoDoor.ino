@@ -7,18 +7,17 @@ int distanceCm, distanceInch;
 void setup()
 {
 
-Serial.begin(9600); 
-pinMode(trigPin, OUTPUT);
+Serial.begin(9600); //initializing console
+pinMode(trigPin, OUTPUT); //initializing pin modes
 pinMode(echoPin, INPUT);
-
-s1.attach(3);   // Servo Motor
+s1.attach(3);   // pinmode for Servo Motor
 
 
 
 }
 void loop() 
 {
-digitalWrite(trigPin, LOW);
+digitalWrite(trigPin, LOW); //constantly measures the ultrasonic sensors distance from the object
 delayMicroseconds(2);
 digitalWrite(trigPin, HIGH);
 delayMicroseconds(10);
@@ -31,7 +30,7 @@ Serial.println(distanceCm);
 delay(50);
 
 if(distanceCm < 8.5)
-{
+{ //once conditon is met the motor is set to the open position
 
  s1.write(90);
  delay(1000);
@@ -39,8 +38,7 @@ if(distanceCm < 8.5)
 }
 
 else
-
-{
+{ //default conditon (closed position)
    s1.write(280);
     delay(10);
 
